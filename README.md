@@ -1,2 +1,2 @@
 # Nexo Messenger
-A modern real-time messaging application
+A modern real time messaging application
