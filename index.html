@@ -1,40 +1,87 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexo Messenger</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexo Messenger</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="app-container">
+    <!-- Шапка приложения -->
+    <header class="app-header">
+      <div class="header-top">
+        <button class="icon-btn" id="menuBtn">☰</button>
+        <h1>Чаты</h1>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">☀️</button>
+          <button class="icon-btn" id="newChatBtn">+</button>
+        </div>
+      </div>
+      
+      <!-- Поиск -->
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Поиск">
+      </div>
 
-    <div class="app">
-        <header class="header">
-            <h1>Nexo Messenger</h1>
-            <p>Общайтесь с друзьями</p>
-        </header>
+      <!-- Вкладки -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="all">Все</button>
+        <button class="tab-btn" data-tab="personal">Личные</button>
+        <button class="tab-btn" data-tab="groups">Группы</button>
+        <button class="tab-btn" data-tab="channels">Каналы</button>
+      </div>
+    </header>
 
-        <main class="chat">
-            <div class="messages" id="messages">
-                <div class="message received">
-                    Привет! Добро пожаловать в Nexo Messenger 👋
-                </div>
-            </div>
+    <!-- Список чатов -->
+    <main class="chat-list" id="chatList">
+      <div class="chat-item" data-id="main-chat">
+        <div class="chat-avatar">💬</div>
+        <div class="chat-info">
+          <div class="chat-title-row">
+            <span class="chat-name">Nexo Общий чат <span class="verified-badge">✔</span></span>
+            <span class="chat-time">00:00</span>
+          </div>
+          <div class="chat-snippet">Добро пожаловать в мессенджер!</div>
+        </div>
+      </div>
+    </main>
 
-            <div class="input-area">
-                <input
-                    type="text"
-                    id="messageInput"
-                    placeholder="Введите сообщение..."
-                >
-
-                <button onclick="sendMessage()">➤</button>
-            </div>
-        </main>
+    <!-- Окно самого чата (скрыто по умолчанию, открывается при клике) -->
+    <div id="chatRoom" class="chat-room hidden">
+      <div class="room-header">
+        <button id="backBtn" class="icon-btn">←</button>
+        <span id="roomTitle">Чат</span>
+      </div>
+      <div class="messages-container" id="messages"></div>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="Ваше имя..." style="max-width: 120px;">
+        <input type="text" id="messageInput" placeholder="Введите сообщение...">
+        <button id="sendBtn" class="send-btn">➤</button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Нижняя панель навигации -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-target="chats">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">Чаты</span>
+      </button>
+      <button class="nav-item" data-target="contacts">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Контакты</span>
+      </button>
+      <button class="nav-item" data-target="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Вы</span>
+      </button>
+      <button class="nav-item" data-target="settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Настройки</span>
+      </button>
+    </nav>
+  </div>
 
+  <script type="module" src="script.js"></script>
 </body>
 </html>
